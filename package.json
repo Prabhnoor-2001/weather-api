@@ -1,0 +1,30 @@
+{
+  "name": "friday-jaguars",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "npm-run-all --parallel startServer startClient",
+    "startServer": "cd ./server && npm run dev",
+    "startClient": "cd ./client && npm run start",
+    "installMod": "npm-run-all --parallel installServer installClient",
+    "installServer": "cd ./server && npm install",
+    "installClient": "cd ./client && npm install",
+    "installParent": "npm install",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Pohutukawa-2021/friday-jaguars.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Pohutukawa-2021/friday-jaguars/issues"
+  },
+  "homepage": "https://github.com/Pohutukawa-2021/friday-jaguars#readme",
+  "devDependencies": {
+    "npm-run-all": "^4.1.5"
+  }
+}
