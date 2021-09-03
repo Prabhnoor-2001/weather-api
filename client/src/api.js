@@ -25,6 +25,6 @@ export function getPhoto(id){
     return request
     .get(photoURl)
     .then(response => {
-        console.log(response.header);
+       return  response;
     })
 }
