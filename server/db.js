@@ -3,7 +3,10 @@ const database = require('knex')(development)
 
 module.exports = {
   getAllComments,
-  getCommentById
+  getCommentById,
+  addComments,
+  editComments,
+  deleteComments
 }
 
 function getAllComments (db = database) {
@@ -16,6 +19,21 @@ function getCommentById(commentId, db = database) {
   .first()
 }
 
-// first = returns the first element
-// used instead of select()
+function addComments(newComment, db = database) {
+  return db('reviews').insert({...newComment})
+}
 
+function editComments(updateComment,commentId, db = database) {
+  return db('reviews')
+  .where({id: commentId})
+  .update(updateComment)
+  .then(() => { 
+      return getCommentById(commentId)
+    })
+}
+
+function deleteComments(commentId, db = database) {
+  return db('reviews')
+  .where({id: commentId})
+  .del()
+}
