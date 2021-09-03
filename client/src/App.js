@@ -1,25 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from 'react'
+import { Route } from 'react-router-dom'
+import { getPhoto, getTemp } from './api'
+function App () {
+  const [currTemp, setTemp] = useState({})
+  const [isLoading, setLoad] = useState(true)
+  const [weather, setWeather]= useState({})
+  useEffect(()=>{
+    getTemperature()
+    //getPicture()
+  },[])
 
-function App() {
+  function getTemperature(){
+    getTemp('Auckland')
+      .then((data)=>{
+        console.log(data);
+        setTemp(data.main)
+        setWeather(data.weather[0])
+        setLoad(false)
+        return null
+      })
+  }
+  // function getPicture(){
+  //   getPhoto(weather.icon)
+  //     .then((photo)=>{
+  //       console.log(photo);
+  //     })
+  // }
+  //console.log(currTemp);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+    <h1>{isLoading ? 'hi':currTemp.temp}°C</h1>
+    <h1>{isLoading ? 'hi':weather.main}</h1>
+    <h2>{isLoading ? 'hi':weather.description}</h2>
+    </>
+  )
 }
 
-export default App;
+export default App
