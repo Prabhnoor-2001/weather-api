@@ -23,3 +23,15 @@ export function getPhoto(id) {
 export function getComments() {
   return request.get("http://localhost:3001/comments");
 }
+
+export function postNewComment(newComment) {
+  return request
+    .post("http://localhost:3001/comments/add")
+    .send(newComment)
+    .then((data) => {
+      console.log(data);
+    })
+    .catch((err) => {
+      console.log(err.message);
+    });
+}
