@@ -1,5 +1,10 @@
 body {
   background-image: url("./Image2.jpg");
+  font-family: "Noto Sans JP", sans-serif;
+}
+
+input {
+  font-family: "Noto Sans JP", sans-serif;
 }
 
 h2 {
@@ -41,6 +46,7 @@ h2 {
   font-size: 16px;
   margin: 4px 2px;
   cursor: pointer;
+  font-family: "Noto Sans JP", sans-serif;
 }
 
 .formContainer {
@@ -66,4 +72,6 @@ h2 {
 .submitButton {
   border-radius: 0.5rem;
   margin-top: 1rem;
+  font-family: "Noto Sans JP", sans-serif;
+  padding: 1rem;
 }
