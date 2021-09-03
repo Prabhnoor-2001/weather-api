@@ -3,6 +3,8 @@ import { Route } from 'react-router-dom'
 import { getTemp } from './api'
 import SearchBar from './components/searchBar'
 import Review from './components/Review'
+import './App.css'
+
 function App () {
   const [currTemp, setTemp] = useState({})
   const [isLoading, setLoad] = useState(true)
@@ -50,19 +52,25 @@ function App () {
     <>
     <Route exact path='/'>
 
-    <h1>{isLoading ? 'hi':currTemp.temp}°C</h1>
-    <h1>{isLoading ? 'hi':weather.main}</h1>
-    <h2>{isLoading ? 'hi':weather.description}</h2>
-    {
-      isLoading ? 'hi':
-      <SearchBar
-          placeholder='London etc...'
-          handleChange={(event) => {
-            handleChange(event)
-          }}
-          getTemperature={getTemperature}
-        />
-    }
+    <div className="search">
+      {
+        isLoading ? 'hi':
+        <SearchBar
+            placeholder='City name...'
+            handleChange={(event) => {
+              handleChange(event)
+            }}
+            getTemperature={getTemperature}
+          />
+      }
+    </div>
+
+    <div className="data">
+      <h1>{isLoading ? 'hi':currTemp.temp}°C</h1>
+      <h1>{isLoading ? 'hi':weather.main}</h1>
+      <h2>{isLoading ? 'hi':weather.description}</h2>
+    </div>
+
     </Route>
     <Route path='/reviews' component={Review}>
     </Route>
