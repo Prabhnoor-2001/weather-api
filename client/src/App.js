@@ -5,14 +5,14 @@ import SearchBar from './components/searchBar'
 import Review from './components/Review'
 import './App.css'
 
-function App () {
-  const [currTemp, setTemp] = useState({})
-  const [isLoading, setLoad] = useState(true)
-  const [weather, setWeather]= useState({})
-  const [currentCity, setCity] =  useState('')
-  useEffect(()=>{
-    getTemperature()
-  },[])
+function App() {
+  const [currTemp, setTemp] = useState({});
+  const [isLoading, setLoad] = useState(true);
+  const [weather, setWeather] = useState({});
+  const [currentCity, setCity] = useState("");
+  useEffect(() => {
+    getTemperature();
+  }, []);
 
   function getTemperature(){
     if(isLoading){
@@ -27,24 +27,14 @@ function App () {
         console.log("hey error");
       })
     }
-   else{ getTemp(currentCity)
-      .then((data)=>{
-        setTemp(data.main)
-        setWeather(data.weather[0])
-        setLoad(false)
-        return null
-      })
-      .catch((err)=>{
-        console.log("hey error");
-      })}
   }
-  function handleChange (event) {
+  function handleChange(event) {
     //setSearch(event.target.value)
     //console.log(event.target.value);
-    handleCityName(event.target.value)
+    handleCityName(event.target.value);
   }
-  function handleCityName (name) {
-    setCity(name)
+  function handleCityName(name) {
+    setCity(name);
     //console.log(currentCity);
   }
   //console.log(currTemp);
@@ -81,7 +71,7 @@ function App () {
     <Route path='/reviews' component={Review}>
     </Route>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
