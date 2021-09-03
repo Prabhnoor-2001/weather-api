@@ -14,7 +14,8 @@ const SearchBar = (props) => {
           placeholder={props.placeholder}
           onChange={props.handleChange} //this handles the bar
         />
-        <button onClick={props.getTemperature} >search</button>
+        <br />
+        <button className='search-button'onClick={props.getTemperature} >search</button>
       </form>
 
     </>
