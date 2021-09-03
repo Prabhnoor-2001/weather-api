@@ -1,16 +1,20 @@
 import React, { useState } from "react";
 import { postNewComment } from "../api";
+import { useHistory } from "react-router-dom";
 
 function WriteReview() {
   const [name, setName] = useState("");
   const [review, setReview] = useState("");
+  const history = useHistory();
 
   function onSubmit() {
     const newReview = {
       name,
       comments: review,
     };
-    postNewComment(newReview);
+    postNewComment(newReview).then(() => {
+      history.push("/reviews");
+    });
   }
   return (
     <div className="formContainer">
