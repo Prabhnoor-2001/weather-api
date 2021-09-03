@@ -5,7 +5,8 @@ module.exports = {
   getAllComments,
   getCommentById,
   addComments,
-  editComments
+  editComments,
+  deleteComments
 }
 
 function getAllComments (db = database) {
@@ -23,9 +24,16 @@ function addComments(newComment, db = database) {
 }
 
 function editComments(updateComment,commentId, db = database) {
-  return db('reviews').where({id: commentId})
+  return db('reviews')
+  .where({id: commentId})
   .update(updateComment)
   .then(() => { 
       return getCommentById(commentId)
     })
+}
+
+function deleteComments(commentId, db = database) {
+  return db('reviews')
+  .where({id: commentId})
+  .del()
 }

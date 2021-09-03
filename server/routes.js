@@ -40,8 +40,20 @@ router.patch("/edit/:id", (req, res) => {
   })
   .catch(err => {
     console.log(err)
-    res.status(500).send('no changes to be seen')
+    res.status(500).send('behavioural change not found')
   })
 })
+
+router.delete("/delete/:id", (req, res) => {
+  const id = req.params.id
+  try {
+    db.deleteComments(id)
+    .then(() => {
+      res.send('you just got erased')
+    })
+  } catch (error){
+    console.error('your eraser just got played')
+  }
+});
 
 module.exports = router
