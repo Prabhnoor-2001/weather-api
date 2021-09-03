@@ -1,13 +1,11 @@
 const express = require("express");
-
-const commentRouter = require('./routes')
+const cors = require("cors");
+const commentRouter = require("./routes");
 const server = express();
+server.use(cors());
 
-
-
-server.use('/comments', commentRouter)
-module.exports = server
-
+server.use("/comments", commentRouter);
+module.exports = server;
 
 // set up database for comments (Knex)  ==>     id, name, comments
 
@@ -19,4 +17,3 @@ module.exports = server
 // deleting the comments
 
 // components for reviews
-
