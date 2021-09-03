@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from "react";
-import { Route } from "react-router-dom";
-import { getTemp } from "./api";
-import SearchBar from "./components/searchBar";
-import Review from "./components/Review";
-import "./App.css";
-import WriteReview from "./components/WriteReview";
+import React, { useEffect, useState } from 'react'
+import { Route, Link } from 'react-router-dom'
+import { getTemp } from './api'
+import SearchBar from './components/searchBar'
+import Review from './components/Review'
+import './App.css'
 
 function App() {
   const [currTemp, setTemp] = useState({});
@@ -15,29 +14,18 @@ function App() {
     getTemperature();
   }, []);
 
-  function getTemperature() {
-    if (isLoading) {
-      getTemp("auckland")
-        .then((data) => {
-          setTemp(data.main);
-          setWeather(data.weather[0]);
-          setLoad(false);
-          return null;
-        })
-        .catch((err) => {
-          console.log("hey error");
-        });
-    } else {
-      getTemp(currentCity)
-        .then((data) => {
-          setTemp(data.main);
-          setWeather(data.weather[0]);
-          setLoad(false);
-          return null;
-        })
-        .catch((err) => {
-          console.log("hey error");
-        });
+  function getTemperature(){
+    if(isLoading){
+      getTemp("Auckland")
+      .then((data)=>{
+        setTemp(data.main)
+        setWeather(data.weather[0])
+        setLoad(false)
+        return null
+      })
+      .catch((err)=>{
+        console.log("hey error");
+      })
     }
   }
   function handleChange(event) {
@@ -52,29 +40,36 @@ function App() {
   //console.log(currTemp);
   return (
     <>
-      <Route exact path="/">
-        <div className="search">
-          {isLoading ? (
-            "hi"
-          ) : (
-            <SearchBar
-              placeholder="City name..."
-              handleChange={(event) => {
-                handleChange(event);
-              }}
-              getTemperature={getTemperature}
-            />
-          )}
-        </div>
+    <Link to="/review"><button className='get-reviews-button'>Reviews</button></Link>
+    <Link to="/new/review"><button className='get-reviews-button'>Write a Review</button></Link>
 
-        <div className="data">
-          <h1>{isLoading ? "hi" : currTemp.temp}°C</h1>
-          <h1>{isLoading ? "hi" : weather.main}</h1>
-          <h2>{isLoading ? "hi" : weather.description}</h2>
-        </div>
-      </Route>
-      <Route path="/new/review" component={WriteReview} />
-      <Route path="/reviews" component={Review} />
+    <Route exact path='/'>
+
+    <div className="search">
+      {
+        isLoading ? 'loading...':
+        <SearchBar
+            placeholder='City name...'
+            handleChange={(event) => {
+              handleChange(event)
+            }}
+            getTemperature={getTemperature}
+          />
+      }
+    </div>
+
+    <div className="data">
+      <h1><u>{currentCity}</u></h1>
+      <ul>
+        <li><h2><span>{isLoading ? 'loading...':currTemp.temp}°C</span></h2></li>
+        <li><h2><span>{isLoading ? 'loading...':weather.main}</span></h2></li>
+        <li><h3><span>{isLoading ? 'loading...':weather.description}</span></h3></li>
+      </ul>
+    </div>
+
+    </Route>
+    <Route path='/reviews' component={Review}>
+    </Route>
     </>
   );
 }

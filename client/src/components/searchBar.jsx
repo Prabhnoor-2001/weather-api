@@ -23,12 +23,7 @@ const SearchBar = (props) => {
           onChange={props.handleChange} //this handles the bar
         />
         <br />
-        <button className="search-button" onClick={props.getTemperature}>
-          search
-        </button>
-        <NavLink to="/new/review">
-          <button className="search-button">Write a review</button>
-        </NavLink>
+        <button className='search-button'onClick={props.getTemperature} >Search</button>
       </form>
     </>
   );
