@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Route } from 'react-router-dom'
+import { Route, Link } from 'react-router-dom'
 import { getTemp } from './api'
 import SearchBar from './components/searchBar'
 import Review from './components/Review'
@@ -16,7 +16,7 @@ function App () {
 
   function getTemperature(){
     if(isLoading){
-      getTemp("copenhagen")
+      getTemp("Auckland")
       .then((data)=>{
         setTemp(data.main)
         setWeather(data.weather[0])
@@ -50,11 +50,14 @@ function App () {
   //console.log(currTemp);
   return (
     <>
+    <Link to="/review"><button className='get-reviews-button'>Reviews</button></Link>
+    <Link to="/new/review"><button className='get-reviews-button'>Write a Review</button></Link>
+
     <Route exact path='/'>
 
     <div className="search">
       {
-        isLoading ? 'hi':
+        isLoading ? 'loading...':
         <SearchBar
             placeholder='City name...'
             handleChange={(event) => {
@@ -66,9 +69,12 @@ function App () {
     </div>
 
     <div className="data">
-      <h1>{isLoading ? 'hi':currTemp.temp}°C</h1>
-      <h1>{isLoading ? 'hi':weather.main}</h1>
-      <h2>{isLoading ? 'hi':weather.description}</h2>
+      <h1><u>{currentCity}</u></h1>
+      <ul>
+        <li><h2><span>{isLoading ? 'loading...':currTemp.temp}°C</span></h2></li>
+        <li><h2><span>{isLoading ? 'loading...':weather.main}</span></h2></li>
+        <li><h3><span>{isLoading ? 'loading...':weather.description}</span></h3></li>
+      </ul>
     </div>
 
     </Route>
