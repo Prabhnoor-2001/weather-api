@@ -112,3 +112,7 @@ input {
   padding: 0.5rem;
   font-family: "Noto Sans JP", sans-serif;
 }
+
+.reviewCard > h2 {
+  margin: 0;
+}
