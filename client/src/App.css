@@ -1,28 +1,48 @@
 body {
   background-image: url("./Image2.jpg");
-  font-family: "Noto Sans JP", sans-serif;
-}
+ }
 
-input {
-  font-family: "Noto Sans JP", sans-serif;
-}
+ h1{
 
-h2 {
-  font-size: 50px;
+   font-size: 80px;
+   color: aliceblue;
+   margin-bottom: -20px;
+  
+
+ }
+
+ h2{
+   font-size: 50px;
   color: aliceblue;
-  background-color: antiquewhite;
-  margin-left: 40%;
-  margin-right: 40%;
+  margin-left: -50px;
+ }
+
+ h3{
+  font-size: 30px;
+ color: aliceblue;
+ margin-left: -50px;
 }
 
-.data {
+ /* h1 span { 
+  background-color: rgb(63, 63, 202); 
+}
+
+h2 span { 
+  background-color: rgb(63, 63, 202); 
+} */
+
+ .data {
+  background-color: rgb(21, 10, 70); 
   height: 100%;
-  width: 100%;
+  width: 20%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   text-align: center;
-  margin-top: 5%;
+  margin-left: 40%;
+  border-radius: 20%;
+  
+  
 }
 
 .search {
@@ -46,32 +66,17 @@ h2 {
   font-size: 16px;
   margin: 4px 2px;
   cursor: pointer;
-  font-family: "Noto Sans JP", sans-serif;
 }
 
-.formContainer {
-  display: flex;
-  width: 100%;
-  align-items: center;
-  flex-direction: row;
-  justify-content: center;
-}
-
-.form {
-  margin: 1rem;
-  padding: 2rem;
-  background-color: white;
-  border-radius: 0.5rem;
-}
-
-.formText {
-  display: flex;
-  flex-direction: column;
-}
-
-.submitButton {
-  border-radius: 0.5rem;
-  margin-top: 1rem;
-  font-family: "Noto Sans JP", sans-serif;
-  padding: 1rem;
+.get-reviews-button {
+  background-color: #566356;
+  border-radius: 5px;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
 }
