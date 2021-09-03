@@ -27,6 +27,17 @@ function App() {
         .catch((err) => {
           console.log("hey error");
         });
+    } else {
+      getTemp(currentCity)
+        .then((data) => {
+          setTemp(data.main);
+          setWeather(data.weather[0]);
+          setLoad(false);
+          return null;
+        })
+        .catch((err) => {
+          console.log("hey error");
+        });
     }
   }
   function handleChange(event) {
