@@ -16,7 +16,7 @@ function App () {
 
   function getTemperature(){
     if(isLoading){
-      getTemp("copenhagen")
+      getTemp("Auckland")
       .then((data)=>{
         setTemp(data.main)
         setWeather(data.weather[0])
