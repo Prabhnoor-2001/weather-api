@@ -1,6 +1,6 @@
 import request from "superagent";
 
-const internalApiURL = "http://localhost:3001/";
+const internalApiURL = "http://localhost:3001/comments";
 // const weatherURL = 'https://api.openweathermap.org/data/2.5/find?q={0}&appid=73e726a73af3f97bfe6eb3fdb989d3ba&units=metric'
 // const photoURl = `http://openweathermap.org/img/wn/${idFormat}@2x.png{1}`
 
